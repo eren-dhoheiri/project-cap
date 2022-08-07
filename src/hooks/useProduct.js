@@ -1,14 +1,14 @@
-import { useState, useEffect } from 'react';
-import api from 'config/api';
+import { useState } from 'react';
+import api from 'api';
 
 export const useProducts = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState([]);
 
-  const getAllProduct = async () => {
+  const getAllProduct = async (page, limit, sortBy, order) => {
     try {
       setIsLoading(true);
-      const res = await api.get('/product');
+      const res = await api.getAll(page, limit, sortBy, order);
       setData(res.data);
     } catch (err) {
       console.log(err);
@@ -16,12 +16,6 @@ export const useProducts = () => {
       setIsLoading(false);
     }
   };
-
-  useEffect(() => {
-    if (data.length < 1) {
-      getAllProduct();
-    }
-  }, [data]);
 
   return [isLoading, data, getAllProduct];
 };
@@ -33,7 +27,7 @@ export const useDetailProducts = () => {
   const getProductDetail = async id => {
     try {
       setIsLoading(true);
-      const res = await api.get(`/product/${id}`);
+      const res = await api.getById(id);
       setData(res.data);
     } catch (err) {
       console.log(err);

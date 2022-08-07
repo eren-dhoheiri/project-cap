@@ -1,18 +1,32 @@
-import React, { useEffect } from 'react';
-import { images } from 'assets';
-import { useParams } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 
-import { useDetailProducts } from 'hooks/useProduct';
+import { useProducts, useDetailProducts } from 'hooks/useProduct';
 
 const Index = () => {
   const { productId } = useParams();
-  const [isLoading, data, getDetailProduct] = useDetailProducts();
+  const navigate = useNavigate();
+  const [changeProduct, setChangeProduct] = useState(false);
+  const [isLoading, dataDetail, getDetailProduct] = useDetailProducts();
+  const [isLoadingProduct, data, getProduct] = useProducts();
 
   useEffect(() => {
-    if (data.length < 1) {
+    if (dataDetail.length < 1 || changeProduct) {
       getDetailProduct(productId);
+      setChangeProduct(false);
     }
-  }, [data.length, getDetailProduct, productId]);
+  }, [changeProduct, dataDetail, getDetailProduct, productId]);
+
+  useEffect(() => {
+    if (data.length < 1 || changeProduct) {
+      getProduct(Math.random() * 2, 4, '', '');
+    }
+  }, [changeProduct, data.length, getProduct]);
+
+  const handleClick = id => {
+    setChangeProduct(true);
+    navigate(`/product/${id}`);
+  };
 
   return isLoading ? (
     <div style={{ height: '100vh', textAlign: 'center' }}>
@@ -23,9 +37,14 @@ const Index = () => {
       <div className='small-container single-product'>
         <div className='row'>
           <div className='col-2'>
-            <img src={data?.thumbnail} alt='' width='100%' id='ProductImg' />
+            <img
+              src={dataDetail?.thumbnail}
+              alt=''
+              width='100%'
+              id='ProductImg'
+            />
             <div className='small-img-row'>
-              {data?.image?.map((image, idx) => (
+              {dataDetail?.image?.map((image, idx) => (
                 <div className='small-img-col' key={idx}>
                   <img
                     src={`${image}`}
@@ -38,10 +57,10 @@ const Index = () => {
             </div>
           </div>
           <div className='col-2'>
-            <p>Home / Product Details</p>
-            <h1>{data?.name}</h1>
-            <h4>${data?.price}</h4>
-            <select>
+            <p>Home / Product / Product Details</p>
+            <h1>{dataDetail?.name}</h1>
+            <h4>${dataDetail?.price}</h4>
+            <select onChange={e => console.log(e.target.value)}>
               <option value=''>Select Size</option>
               <option value='XXL'>XXL</option>
               <option value='XL'>XL</option>
@@ -58,71 +77,49 @@ const Index = () => {
               Product Details <i className='fa fa-indent'></i>
             </h3>
             <br />
-            <p>{data?.desc}</p>
+            <p>{dataDetail?.desc}</p>
           </div>
-        </div>
-      </div>
-      {/* <!-- title --> */}
-      <div className='small-container'>
-        <div className='row row-2'>
-          <h2>Related Products</h2>
-          <p>View More</p>
         </div>
       </div>
 
-      {/* <!-- Products --> */}
-      <div className='small-container'>
-        <div className='row'>
-          <div className='col-4'>
-            <img src={images['product-9.jpg']} alt='' />
-            <h4>Red Printed T-Shirt</h4>
-            <div className='rating'>
-              <i className='fa fa-star'></i>
-              <i className='fa fa-star'></i>
-              <i className='fa fa-star'></i>
-              <i className='fa fa-star'></i>
-              <i className='fa fa-star-o'></i>
+      {isLoadingProduct ? (
+        <></>
+      ) : (
+        <div>
+          <div className='small-container'>
+            <div className='row row-2'>
+              <h2>Related Products</h2>
+              <p
+                style={{ cursor: 'pointer' }}
+                onClick={() => navigate('/product')}
+              >
+                View More
+              </p>
             </div>
-            <p>$50.00</p>
           </div>
-          <div className='col-4'>
-            <img src={images['product-10.jpg']} alt='' />
-            <h4>Red Printed T-Shirt</h4>
-            <div className='rating'>
-              <i className='fa fa-star'></i>
-              <i className='fa fa-star'></i>
-              <i className='fa fa-star'></i>
-              <i className='fa fa-star'></i>
-              <i className='fa fa-star-o'></i>
+
+          <div className='small-container'>
+            <div className='row'>
+              {data?.map(product => (
+                <div className='col-4' key={product.id}>
+                  <div onClick={() => handleClick(product.id)}>
+                    <img src={product.thumbnail} alt='' width='100%' />
+                  </div>
+                  <h4>{product.name}</h4>
+                  <div className='rating'>
+                    <i className='fa fa-star'></i>
+                    <i className='fa fa-star'></i>
+                    <i className='fa fa-star'></i>
+                    <i className='fa fa-star'></i>
+                    <i className='fa fa-star-o'></i>
+                  </div>
+                  <p>{product.price}</p>
+                </div>
+              ))}
             </div>
-            <p>$50.00</p>
-          </div>
-          <div className='col-4'>
-            <img src={images['product-11.jpg']} alt='' />
-            <h4>Red Printed T-Shirt</h4>
-            <div className='rating'>
-              <i className='fa fa-star'></i>
-              <i className='fa fa-star'></i>
-              <i className='fa fa-star'></i>
-              <i className='fa fa-star'></i>
-              <i className='fa fa-star-o'></i>
-            </div>
-            <p>$50.00</p>
-          </div>
-          <div className='col-4'>
-            <img src={images['product-12.jpg']} alt='' />
-            <h4>Red Printed T-Shirt</h4>
-            <div className='rating'>
-              <i className='fa fa-star'></i>
-              <i className='fa fa-star'></i>
-              <i className='fa fa-star'></i>
-              <i className='fa fa-star'></i>
-              <i className='fa fa-star-o'></i>
-            </div>
-            <p>$50.00</p>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };
