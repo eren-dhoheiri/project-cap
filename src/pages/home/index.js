@@ -1,7 +1,9 @@
 import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { images } from 'assets';
 
 const Index = () => {
+  const navigate = useNavigate();
   return (
     <>
       {/* <!-- Feadtued Categories --> */}
@@ -26,9 +28,9 @@ const Index = () => {
         <h2 className='title'>Featured Products</h2>
         <div className='row'>
           <div className='col-4'>
-            <a href='product_details.html'>
+            <Link to='/product'>
               <img src={images['product-1.jpg']} alt='' />
-            </a>
+            </Link>
             <h4>Red Printed T-Shirt</h4>
             <div className='rating' alt=''>
               <i className='fa fa-star'></i>
@@ -195,9 +197,9 @@ const Index = () => {
                 everything is clear as can be.
                 <br />
               </small>
-              <a href='products.html' className='btn'>
+              <div onClick={() => navigate('/product')} className='btn'>
                 Buy Now &#8594;
-              </a>
+              </div>
             </div>
           </div>
         </div>

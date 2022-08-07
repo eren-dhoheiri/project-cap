@@ -2,6 +2,7 @@ import React from 'react';
 import { images } from 'assets';
 
 const Index = () => {
+  
   return (
     <div>
       {/* <!-- Single Products --> */}

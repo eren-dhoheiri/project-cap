@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { images } from 'assets';
 
 const Index = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div>
       <div className='small-container'>
@@ -17,9 +22,9 @@ const Index = () => {
         </div>
         <div className='row'>
           <div className='col-4'>
-            <a href='/'>
+            <Link to='/product/1'>
               <img src={images['product-1.jpg']} alt='' />
-            </a>
+            </Link>
             <h4>Red Printed T-Shirt</h4>
             <div className='rating'>
               <i className='fa fa-star'></i>

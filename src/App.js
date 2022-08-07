@@ -19,7 +19,7 @@ function App() {
           path='product/:productId'
           element={<Layout children={<ProductDetails />} />}
         />
-        <Route path='sign-in' element={<Layout children={<Auth />} />} />
+        <Route path='sign-up' element={<Layout children={<Auth />} />} />
         <Route path='Cart' element={<Layout children={<Cart />} />} />
       </Routes>
     </BrowserRouter>
