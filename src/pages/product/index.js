@@ -1,13 +1,16 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { images } from 'assets';
+
+import { useProducts } from 'hooks/useProduct';
 
 const Index = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  const [isLoading, data] = useProducts();
 
-  return (
+  return isLoading ? (
+    <div style={{ height: '100vh', textAlign: 'center' }}>
+      Loading Product...
+    </div>
+  ) : (
     <div>
       <div className='small-container'>
         <div className='row row-2'>
@@ -21,156 +24,26 @@ const Index = () => {
           </select>
         </div>
         <div className='row'>
-          <div className='col-4'>
-            <Link to='/product/1'>
-              <img src={images['product-1.jpg']} alt='' />
-            </Link>
-            <h4>Red Printed T-Shirt</h4>
-            <div className='rating'>
-              <i className='fa fa-star'></i>
-              <i className='fa fa-star'></i>
-              <i className='fa fa-star'></i>
-              <i className='fa fa-star'></i>
-              <i className='fa fa-star-o'></i>
+          {data?.map(product => (
+            <div className='col-4' key={product.id}>
+              <Link to={`/product/${product.id}`}>
+                <img
+                  // src={images[`product-${product.id}.jpg`]}
+                  src={product.thumbnail}
+                  alt={product.name}
+                />
+              </Link>
+              <h4>{product.name}</h4>
+              <div className='rating'>
+                <i className='fa fa-star'></i>
+                <i className='fa fa-star'></i>
+                <i className='fa fa-star'></i>
+                <i className='fa fa-star'></i>
+                <i className='fa fa-star-o'></i>
+              </div>
+              <p>{product.price}</p>
             </div>
-            <p>$50.00</p>
-          </div>
-          <div className='col-4'>
-            <img src={images['product-2.jpg']} alt='' />
-            <h4>Red Printed T-Shirt</h4>
-            <div className='rating'>
-              <i className='fa fa-star'></i>
-              <i className='fa fa-star'></i>
-              <i className='fa fa-star'></i>
-              <i className='fa fa-star'></i>
-              <i className='fa fa-star-o'></i>
-            </div>
-            <p>$50.00</p>
-          </div>
-          <div className='col-4'>
-            <img src={images['product-3.jpg']} alt='' />
-            <h4>Red Printed T-Shirt</h4>
-            <div className='rating'>
-              <i className='fa fa-star'></i>
-              <i className='fa fa-star'></i>
-              <i className='fa fa-star'></i>
-              <i className='fa fa-star'></i>
-              <i className='fa fa-star-o'></i>
-            </div>
-            <p>$50.00</p>
-          </div>
-          <div className='col-4'>
-            <img src={images['product-4.jpg']} alt='' />
-            <h4>Red Printed T-Shirt</h4>
-            <div className='rating'>
-              <i className='fa fa-star'></i>
-              <i className='fa fa-star'></i>
-              <i className='fa fa-star'></i>
-              <i className='fa fa-star'></i>
-              <i className='fa fa-star-o'></i>
-            </div>
-            <p>$50.00</p>
-          </div>
-        </div>
-        <div className='row'>
-          <div className='col-4'>
-            <img src={images['product-5.jpg']} alt='' />
-            <h4>Red Printed T-Shirt</h4>
-            <div className='rating'>
-              <i className='fa fa-star'></i>
-              <i className='fa fa-star'></i>
-              <i className='fa fa-star'></i>
-              <i className='fa fa-star'></i>
-              <i className='fa fa-star-o'></i>
-            </div>
-            <p>$50.00</p>
-          </div>
-          <div className='col-4'>
-            <img src={images['product-6.jpg']} alt='' />
-            <h4>Red Printed T-Shirt</h4>
-            <div className='rating'>
-              <i className='fa fa-star'></i>
-              <i className='fa fa-star'></i>
-              <i className='fa fa-star'></i>
-              <i className='fa fa-star'></i>
-              <i className='fa fa-star-o'></i>
-            </div>
-            <p>$50.00</p>
-          </div>
-          <div className='col-4'>
-            <img src={images['product-7.jpg']} alt='' />
-            <h4>Red Printed T-Shirt</h4>
-            <div className='rating'>
-              <i className='fa fa-star'></i>
-              <i className='fa fa-star'></i>
-              <i className='fa fa-star'></i>
-              <i className='fa fa-star'></i>
-              <i className='fa fa-star-o'></i>
-            </div>
-            <p>$50.00</p>
-          </div>
-          <div className='col-4'>
-            <img src={images['product-8.jpg']} alt='' />
-            <h4>Red Printed T-Shirt</h4>
-            <div className='rating'>
-              <i className='fa fa-star'></i>
-              <i className='fa fa-star'></i>
-              <i className='fa fa-star'></i>
-              <i className='fa fa-star'></i>
-              <i className='fa fa-star-o'></i>
-            </div>
-            <p>$50.00</p>
-          </div>
-        </div>
-        <div className='row'>
-          <div className='col-4'>
-            <img src={images['product-9.jpg']} alt='' />
-            <h4>Red Printed T-Shirt</h4>
-            <div className='rating'>
-              <i className='fa fa-star'></i>
-              <i className='fa fa-star'></i>
-              <i className='fa fa-star'></i>
-              <i className='fa fa-star'></i>
-              <i className='fa fa-star-o'></i>
-            </div>
-            <p>$50.00</p>
-          </div>
-          <div className='col-4'>
-            <img src={images['product-10.jpg']} alt='' />
-            <h4>Red Printed T-Shirt</h4>
-            <div className='rating'>
-              <i className='fa fa-star'></i>
-              <i className='fa fa-star'></i>
-              <i className='fa fa-star'></i>
-              <i className='fa fa-star'></i>
-              <i className='fa fa-star-o'></i>
-            </div>
-            <p>$50.00</p>
-          </div>
-          <div className='col-4'>
-            <img src={images['product-11.jpg']} alt='' />
-            <h4>Red Printed T-Shirt</h4>
-            <div className='rating'>
-              <i className='fa fa-star'></i>
-              <i className='fa fa-star'></i>
-              <i className='fa fa-star'></i>
-              <i className='fa fa-star'></i>
-              <i className='fa fa-star-o'></i>
-            </div>
-            <p>$50.00</p>
-          </div>
-          <div className='col-4'>
-            <img src={images['product-12.jpg']} alt='' />
-            <h4>Red Printed T-Shirt</h4>
-            <div className='rating'>
-              <i className='fa fa-star'></i>
-              <i className='fa fa-star'></i>
-              <i className='fa fa-star'></i>
-              <i className='fa fa-star'></i>
-              <i className='fa fa-star-o'></i>
-            </div>
-            <p>$50.00</p>
-          </div>
+          ))}
         </div>
       </div>
     </div>
