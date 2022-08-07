@@ -1,67 +1,53 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { images } from 'assets';
+import { useParams } from 'react-router-dom';
+
+import { useDetailProducts } from 'hooks/useProduct';
 
 const Index = () => {
-  
-  return (
+  const { productId } = useParams();
+  const [isLoading, data, getDetailProduct] = useDetailProducts();
+
+  useEffect(() => {
+    if (data.length < 1) {
+      getDetailProduct(productId);
+    }
+  }, [data.length, getDetailProduct, productId]);
+
+  return isLoading ? (
+    <div style={{ height: '100vh', textAlign: 'center' }}>
+      Loading Product...
+    </div>
+  ) : (
     <div>
-      {/* <!-- Single Products --> */}
       <div className='small-container single-product'>
         <div className='row'>
           <div className='col-2'>
-            <img
-              src={images['gallery-1.jpg']}
-              alt=''
-              width='100%'
-              id='ProductImg'
-            />
-
+            <img src={data?.thumbnail} alt='' width='100%' id='ProductImg' />
             <div className='small-img-row'>
-              <div className='small-img-col'>
-                <img
-                  src={images['gallery-1.jpg']}
-                  alt=''
-                  width='100%'
-                  className='small-img'
-                />
-              </div>
-              <div className='small-img-col'>
-                <img
-                  src={images['gallery-2.jpg']}
-                  alt=''
-                  width='100%'
-                  className='small-img'
-                />
-              </div>
-              <div className='small-img-col'>
-                <img
-                  src={images['gallery-3.jpg']}
-                  alt=''
-                  width='100%'
-                  className='small-img'
-                />
-              </div>
-              <div className='small-img-col'>
-                <img
-                  src={images['gallery-4.jpg']}
-                  alt=''
-                  width='100%'
-                  className='small-img'
-                />
-              </div>
+              {data?.image?.map((image, idx) => (
+                <div className='small-img-col' key={idx}>
+                  <img
+                    src={`${image}`}
+                    alt=''
+                    width='100%'
+                    className='small-img'
+                  />
+                </div>
+              ))}
             </div>
           </div>
           <div className='col-2'>
-            <p>Home / T-Shirt</p>
-            <h1>Red Printed T-Shirt by HRX</h1>
-            <h4>$50.00</h4>
+            <p>Home / Product Details</p>
+            <h1>{data?.name}</h1>
+            <h4>${data?.price}</h4>
             <select>
-              <option>Select Size</option>
-              <option>XXL</option>
-              <option>XL</option>
-              <option>L</option>
-              <option>M</option>
-              <option>S</option>
+              <option value=''>Select Size</option>
+              <option value='XXL'>XXL</option>
+              <option value='XL'>XL</option>
+              <option value='L'>L</option>
+              <option value='M'>M</option>
+              <option value='S'>S</option>
             </select>
             <input type='number' value='1' />
             <a href='/' className='btn'>
@@ -72,11 +58,7 @@ const Index = () => {
               Product Details <i className='fa fa-indent'></i>
             </h3>
             <br />
-            <p>
-              Give your summer wardrobe a style upgrade with the HRX Men's
-              Active T-Shirt. Team it with a pair of shorts for your morning
-              workout or a denims for an evening out with the guys.
-            </p>
+            <p>{data?.desc}</p>
           </div>
         </div>
       </div>
