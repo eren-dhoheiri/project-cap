@@ -1,10 +1,22 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import { useProducts } from 'hooks/useProduct';
 
 const Index = () => {
-  const [isLoading, data] = useProducts();
+  const [sort, setSort] = useState('');
+  const [isLoading, data, getAllProduct] = useProducts();
+
+  useEffect(() => {
+    if (data.length < 1) {
+      getAllProduct(1, 12, '', '');
+    }
+  }, [data.length, getAllProduct]);
+
+  const handleSort = params => {
+    setSort(params);
+    getAllProduct(1, 12, `${params}`, 'asc');
+  };
 
   return isLoading ? (
     <div style={{ height: '100vh', textAlign: 'center' }}>
@@ -15,12 +27,12 @@ const Index = () => {
       <div className='small-container'>
         <div className='row row-2'>
           <h2>All Products</h2>
-          <select>
-            <option>Default Sort</option>
-            <option>Sort By Price</option>
-            <option>Sort By Popularity</option>
-            <option>Sort By Rating</option>
-            <option>Sort By Sale</option>
+          <select
+            onChange={e => handleSort(e.target.value)}
+            defaultValue={sort}
+          >
+            <option value='id'>Default Sort</option>
+            <option value='price'>Sort By Cheap Price</option>
           </select>
         </div>
         <div className='row'>
