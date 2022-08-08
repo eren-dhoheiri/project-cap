@@ -65,7 +65,12 @@ const Index = () => {
         <div className='container'>
           <div className='row'>
             <div className='col-2'>
-              <img src={images['image1.png']} alt='' width='100%' />
+              <img
+                loading='lazy'
+                src={images['image1.png']}
+                alt=''
+                width='100%'
+              />
             </div>
             <div className='col-2'>
               <div className='form-container'>

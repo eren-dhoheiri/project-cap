@@ -11,8 +11,8 @@ const Index = () => {
               <h3>Download Our App</h3>
               <p>Download App for Android and ios mobile phone.</p>
               <div className='app-logo'>
-                <img src={images['play-store.png']} alt='' />
-                <img src={images['app-store.png']} alt='' />
+                <img loading='lazy' src={images['play-store.png']} alt='' />
+                <img loading='lazy' src={images['app-store.png']} alt='' />
               </div>
             </div>
             <div className='footer-col-2'>
