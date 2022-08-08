@@ -67,6 +67,7 @@ const Index = () => {
         <div className='row'>
           <div className='col-2'>
             <img
+              loading='lazy'
               src={dataDetail?.thumbnail}
               alt=''
               width='100%'
@@ -76,6 +77,7 @@ const Index = () => {
               {dataDetail?.image?.map((image, idx) => (
                 <div className='small-img-col' key={idx}>
                   <img
+                    loading='lazy'
                     src={`${image}`}
                     alt=''
                     width='100%'
@@ -140,7 +142,12 @@ const Index = () => {
             {data?.map(product => (
               <div className='col-4' key={product.id}>
                 <div onClick={() => handleClick(product.id)}>
-                  <img src={product.thumbnail} alt='' width='100%' />
+                  <img
+                    loading='lazy'
+                    src={product.thumbnail}
+                    alt=''
+                    width='100%'
+                  />
                 </div>
                 <h4>{product.name}</h4>
                 <div className='rating'>

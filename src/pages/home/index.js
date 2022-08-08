@@ -11,13 +11,13 @@ const Index = () => {
         <div className='small-container'>
           <div className='row'>
             <div className='col-3'>
-              <img src={images['category-1.jpg']} alt='' />
+              <img loading='lazy' src={images['category-1.jpg']} alt='' />
             </div>
             <div className='col-3'>
-              <img src={images['category-2.jpg']} alt='' />
+              <img loading='lazy' src={images['category-2.jpg']} alt='' />
             </div>
             <div className='col-3'>
-              <img src={images['category-3.jpg']} alt='' />
+              <img loading='lazy' src={images['category-3.jpg']} alt='' />
             </div>
           </div>
         </div>
@@ -29,7 +29,7 @@ const Index = () => {
         <div className='row'>
           <div className='col-4'>
             <Link to='/product'>
-              <img src={images['product-1.jpg']} alt='' />
+              <img loading='lazy' src={images['product-1.jpg']} alt='' />
             </Link>
             <h4>Red Printed T-Shirt</h4>
             <div className='rating' alt=''>
@@ -42,7 +42,7 @@ const Index = () => {
             <p>$50.00</p>
           </div>
           <div className='col-4'>
-            <img src={images['product-2.jpg']} alt='' />
+            <img loading='lazy' src={images['product-2.jpg']} alt='' />
             <h4>Red Printed T-Shirt</h4>
             <div className='rating' alt=''>
               <i className='fa fa-star'></i>
@@ -54,7 +54,7 @@ const Index = () => {
             <p>$50.00</p>
           </div>
           <div className='col-4'>
-            <img src={images['product-3.jpg']} alt='' />
+            <img loading='lazy' src={images['product-3.jpg']} alt='' />
             <h4>Red Printed T-Shirt</h4>
             <div className='rating' alt=''>
               <i className='fa fa-star'></i>
@@ -66,7 +66,7 @@ const Index = () => {
             <p>$50.00</p>
           </div>
           <div className='col-4'>
-            <img src={images['product-4.jpg']} alt='' />
+            <img loading='lazy' src={images['product-4.jpg']} alt='' />
             <h4>Red Printed T-Shirt</h4>
             <div className='rating' alt=''>
               <i className='fa fa-star'></i>
@@ -81,7 +81,7 @@ const Index = () => {
         <h2 className='title'>Latest Products</h2>
         <div className='row'>
           <div className='col-4'>
-            <img src={images['product-5.jpg']} alt='' />
+            <img loading='lazy' src={images['product-5.jpg']} alt='' />
             <h4>Red Printed T-Shirt</h4>
             <div className='rating' alt=''>
               <i className='fa fa-star'></i>
@@ -93,7 +93,7 @@ const Index = () => {
             <p>$50.00</p>
           </div>
           <div className='col-4'>
-            <img src={images['product-6.jpg']} alt='' />
+            <img loading='lazy' src={images['product-6.jpg']} alt='' />
             <h4>Red Printed T-Shirt</h4>
             <div className='rating' alt=''>
               <i className='fa fa-star'></i>
@@ -105,7 +105,7 @@ const Index = () => {
             <p>$50.00</p>
           </div>
           <div className='col-4'>
-            <img src={images['product-7.jpg']} alt='' />
+            <img loading='lazy' src={images['product-7.jpg']} alt='' />
             <h4>Red Printed T-Shirt</h4>
             <div className='rating' alt=''>
               <i className='fa fa-star'></i>
@@ -117,7 +117,7 @@ const Index = () => {
             <p>$50.00</p>
           </div>
           <div className='col-4'>
-            <img src={images['product-8.jpg']} alt='' />
+            <img loading='lazy' src={images['product-8.jpg']} alt='' />
             <h4>Red Printed T-Shirt</h4>
             <div className='rating' alt=''>
               <i className='fa fa-star'></i>
@@ -131,7 +131,7 @@ const Index = () => {
         </div>
         <div className='row'>
           <div className='col-4'>
-            <img src={images['product-9.jpg']} alt='' />
+            <img loading='lazy' src={images['product-9.jpg']} alt='' />
             <h4>Red Printed T-Shirt</h4>
             <div className='rating' alt=''>
               <i className='fa fa-star'></i>
@@ -143,7 +143,7 @@ const Index = () => {
             <p>$50.00</p>
           </div>
           <div className='col-4'>
-            <img src={images['product-10.jpg']} alt='' />
+            <img loading='lazy' src={images['product-10.jpg']} alt='' />
             <h4>Red Printed T-Shirt</h4>
             <div className='rating' alt=''>
               <i className='fa fa-star'></i>
@@ -155,7 +155,7 @@ const Index = () => {
             <p>$50.00</p>
           </div>
           <div className='col-4'>
-            <img src={images['product-11.jpg']} alt='' />
+            <img loading='lazy' src={images['product-11.jpg']} alt='' />
             <h4>Red Printed T-Shirt</h4>
             <div className='rating' alt=''>
               <i className='fa fa-star'></i>
@@ -167,7 +167,7 @@ const Index = () => {
             <p>$50.00</p>
           </div>
           <div className='col-4'>
-            <img src={images['product-12.jpg']} alt='' />
+            <img loading='lazy' src={images['product-12.jpg']} alt='' />
             <h4>Red Printed T-Shirt</h4>
             <div className='rating' alt=''>
               <i className='fa fa-star'></i>
@@ -186,7 +186,12 @@ const Index = () => {
         <div className='small-container'>
           <div className='row'>
             <div className='col-2'>
-              <img src={images['exclusive.png']} alt='' className='offer-img' />
+              <img
+                loading='lazy'
+                src={images['exclusive.png']}
+                alt=''
+                className='offer-img'
+              />
             </div>
             <div className='col-2'>
               <p>Exclusively Available on CAP Shop</p>
@@ -222,7 +227,7 @@ const Index = () => {
                 <i className='fa fa-star'></i>
                 <i className='fa fa-star'></i>
               </div>
-              <img src={images['user-1.png']} alt='' />
+              <img loading='lazy' src={images['user-1.png']} alt='' />
               <h3>Sean Parker</h3>
             </div>
             <div className='col-3'>
@@ -238,7 +243,7 @@ const Index = () => {
                 <i className='fa fa-star'></i>
                 <i className='fa fa-star'></i>
               </div>
-              <img src={images['user-2.png']} alt='' />
+              <img loading='lazy' src={images['user-2.png']} alt='' />
               <h3>Mike Smith</h3>
             </div>
             <div className='col-3'>
@@ -254,7 +259,7 @@ const Index = () => {
                 <i className='fa fa-star'></i>
                 <i className='fa fa-star'></i>
               </div>
-              <img src={images['user-3.png']} alt='' />
+              <img loading='lazy' src={images['user-3.png']} alt='' />
               <h3>Mabel Joe</h3>
             </div>
           </div>
@@ -267,19 +272,19 @@ const Index = () => {
         <div className='small-container'>
           <div className='row'>
             <div className='col-5'>
-              <img src={images['logo-godrej.png']} alt='' />
+              <img loading='lazy' src={images['logo-godrej.png']} alt='' />
             </div>
             <div className='col-5'>
-              <img src={images['logo-oppo.png']} alt='' />
+              <img loading='lazy' src={images['logo-oppo.png']} alt='' />
             </div>
             <div className='col-5'>
-              <img src={images['logo-coca-cola.png']} alt='' />
+              <img loading='lazy' src={images['logo-coca-cola.png']} alt='' />
             </div>
             <div className='col-5'>
-              <img src={images['logo-paypal.png']} alt='' />
+              <img loading='lazy' src={images['logo-paypal.png']} alt='' />
             </div>
             <div className='col-5'>
-              <img src={images['logo-philips.png']} alt='' />
+              <img loading='lazy' src={images['logo-philips.png']} alt='' />
             </div>
           </div>
         </div>

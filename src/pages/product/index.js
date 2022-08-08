@@ -40,6 +40,7 @@ const Index = () => {
             <div className='col-4' key={product.id}>
               <Link to={`/product/${product.id}`}>
                 <img
+                  loading='lazy'
                   // src={images[`product-${product.id}.jpg`]}
                   src={product.thumbnail}
                   alt={product.name}

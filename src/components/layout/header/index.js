@@ -82,6 +82,7 @@ const Index = () => {
             {user && (
               <Link to='/cart'>
                 <img
+                  loading='lazy'
                   src={images['cart.png']}
                   alt=''
                   width='30px'
@@ -91,6 +92,7 @@ const Index = () => {
             )}
 
             <img
+              loading='lazy'
               src={images['menu.png']}
               alt=''
               className='menu-icon'
@@ -114,7 +116,7 @@ const Index = () => {
                 </Link>
               </div>
               <div className='col-2'>
-                <img src={images['image1.png']} alt='' />
+                <img loading='lazy' src={images['image1.png']} alt='' />
               </div>
             </div>
           )}

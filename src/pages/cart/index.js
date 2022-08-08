@@ -23,7 +23,7 @@ const Index = () => {
             <tr key={idx}>
               <td>
                 <div className='cart-info'>
-                  <img src={item.thumbnail} alt='' />
+                  <img loading='lazy' src={item.thumbnail} alt='' />
                   <div>
                     <p>{item.name}</p>
                     <small>Price: ${item.price}</small>
