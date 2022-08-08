@@ -8,8 +8,13 @@ export const useProducts = () => {
   const getAllProduct = async (page, limit, sortBy, order) => {
     try {
       setIsLoading(true);
-      const res = await api.getAll(page, limit, sortBy, order);
-      setData(res.data);
+      if (limit === 4) {
+        const res = await api.getAll(page, 4, '', '');
+        setData(res.data);
+      } else {
+        const res = await api.getAll(page, limit, sortBy, order);
+        setData(res.data);
+      }
     } catch (err) {
       console.log(err);
     } finally {
