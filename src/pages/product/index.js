@@ -26,7 +26,7 @@ const Index = () => {
     <div>
       <div className='small-container'>
         <div className='row row-2'>
-          <h2>All Products</h2>
+          <h2>All Product</h2>
           <select
             onChange={e => handleSort(e.target.value)}
             defaultValue={sort}

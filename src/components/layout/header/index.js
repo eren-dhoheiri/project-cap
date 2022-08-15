@@ -55,7 +55,7 @@ const Index = () => {
                   <Link to='/'>Home</Link>
                 </li>
                 <li>
-                  <Link to='/product'>Products</Link>
+                  <Link to='/product'>Our Product</Link>
                 </li>
                 {user ? (
                   <li>
